@@ -10,14 +10,13 @@ void handEcho(int sockconn)
 	bzero(sendBuff, 256);
 	bzero(recvBuff, 256);
 	int sendLen = 0;
-	printf("while\n");
+	
 	while( fgets(sendBuff, 256, stdin) != NULL)
 	{
-		printf("client write\n");
 		write(sockconn, sendBuff, strlen(sendBuff));
 		if( read(sockconn, recvBuff, 256) > 0)
 		{
-			printf("%d,%d,%s\n",strlen(recvBuff), sizeof(recvBuff), recvBuff);
+			printf("echo %d,%d,%s\n",strlen(recvBuff), sizeof(recvBuff), recvBuff);
 		}
 	}
 
@@ -31,7 +30,6 @@ int main(int argc, char const *argv[])
 	servaddr.sin_port = htons(PORT);
 	inet_pton(AF_INET, argv[1], &servaddr.sin_addr);
 	connect(sockconn, (struct sockaddr*)&servaddr, sizeof(servaddr));
-	printf("abc");
 	handEcho(sockconn);
 	close(sockconn);
 	return 0;

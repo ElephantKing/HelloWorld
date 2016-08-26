@@ -13,7 +13,7 @@ void handConn(int sockconn)
 	int recvLen = 0;
 	while( (recvLen = read(sockconn, recvBuff, 256)) > 0)
 	{
-		printf("echo read\n");
+		printf("i have recv %s\n",recvBuff);
 		write(sockconn, recvBuff, recvLen);
 	}
 }
@@ -21,7 +21,7 @@ int main(int argc, char const *argv[])
 {
 	int sockconn, socklisten;
 	struct sockaddr_in servaddr;
-	
+	pid_t pid;
 	socklisten = socket(AF_INET, SOCK_STREAM, 0);
 	servaddr.sin_family = AF_INET;
 	servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -32,7 +32,12 @@ int main(int argc, char const *argv[])
 	while(1)
 	{
 		sockconn = accept(socklisten, NULL, NULL);
-		handConn(sockconn);
+		if((pid = fork()) == 0)
+		{
+			close(socklisten);
+			handConn(sockconn);
+			close(sockconn);
+		}
 		close(sockconn);
 	}
 	return 0;
