@@ -4,7 +4,7 @@
 #include <sys/socket.h>
 #include <sys/select.h>
 
-#define PORT 40000
+#define PORT 50000
 int main(int argc, char const *argv[])
 {
 	int i, maxi, maxfd, listenfd, connfd, sockfd;
@@ -12,6 +12,7 @@ int main(int argc, char const *argv[])
 	ssize_t n;
 	fd_set rset, allset;
 	char buf[256];
+	bzero(buf, 256);
 	socklen_t clilen;
 	struct sockaddr_in servaddr, clientaddr;
 	listenfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -68,6 +69,7 @@ int main(int argc, char const *argv[])
 				}
 				else
 				{
+					printf("send %s\n",buf);
 					write(sockfd, buf, n);//echo what have recvd
 				}
 				if(--nready <= 0)break;//no more readabel descriptor

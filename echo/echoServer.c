@@ -3,7 +3,7 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 
-#define PORT 40000
+#define PORT 50000
 
 void handConn(int sockconn)
 {
