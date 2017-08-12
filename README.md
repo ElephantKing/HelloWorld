@@ -7,3 +7,4 @@ new branch dev 2
 master
 dev
 no-dff
+normal merge
