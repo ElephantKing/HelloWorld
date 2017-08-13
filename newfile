@@ -1,1 +1,7 @@
 add a new file
+add a new line
+git add -p
+
+
+git add -p
+--amend

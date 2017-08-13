@@ -1,3 +1,4 @@
+git add -p
 # HelloWorld
 Just a test
 I am here
@@ -9,3 +10,4 @@ master
 dev
 no-dff
 normal merge
+git add -p
