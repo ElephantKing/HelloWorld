@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 g
+=======
+gaait add -p
+>>>>>>> aaa
 # HelloWorld
 Just a test
 I am here
