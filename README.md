@@ -1,4 +1,4 @@
-git add -p
+gaait add -p
 # HelloWorld
 Just a test
 I am here
