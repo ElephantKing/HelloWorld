@@ -1,4 +1,4 @@
-git add -p
+g
 # HelloWorld
 Just a test
 I am here
